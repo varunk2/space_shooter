@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private float _speed = 3.5f;
+    [SerializeField] private float _speed = 3.5f;
+    [SerializeField] private GameObject _laserPrefab;
+
     private float _upPosition = 0f;
     private float _downPosition = -4.0f;
     private float _leftPosition = -13.5f;
     private float _rightPosition = 13.5f;
 
+
     void Update() {
         Movement();
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Instantiate(_laserPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     private void Movement() {
